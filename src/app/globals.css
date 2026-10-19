@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ral-green: #2D572C;
+  --color-leaf-green: #38761D;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-overflow-scrolling: touch;
+  text-rendering: optimizeSpeed;
+  overscroll-behavior-y: none;
+}
+
+/* Hardware-accelerated smooth animations */
+@keyframes robotFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes robotPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.6);
+  }
+}
+
+@keyframes robotEyeBlink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes robotScan {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+    opacity: 0.2;
+  }
+}
+
+@keyframes robotMouthWave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.4);
+  }
+}
+
+.animate-robot-float {
+  animation: robotFloat 3.5s ease-in-out infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.animate-robot-glow {
+  animation: robotPulseGlow 2.5s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.animate-robot-blink {
+  animation: robotEyeBlink 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-robot-scan {
+  animation: robotScan 1.8s linear infinite;
+  will-change: transform, opacity;
+}
+
+.animate-mouth-1 {
+  animation: robotMouthWave 0.4s ease-in-out infinite 0.1s;
+}
+
+.animate-mouth-2 {
+  animation: robotMouthWave 0.4s ease-in-out infinite 0.25s;
+}
+
+.animate-mouth-3 {
+  animation: robotMouthWave 0.4s ease-in-out infinite 0.05s;
+}
+
+/* Slick Custom Scrollbar for dropdowns & lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.8);
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.animate-aurora {
+  animation: aurora 60s linear infinite;
+  will-change: background-position;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  will-change: transform;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 6s linear infinite;
+  will-change: transform;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
